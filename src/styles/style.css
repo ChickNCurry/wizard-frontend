@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar-wrapper {
+    background-color: lightblue;
+    height: 10vh;
+}
+
+.outlet-wrapper {
+    background-color: lightcoral;
+    height: 90vh;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+.navbar > * {
+    text-decoration: none;
+    color: black;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.game {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    height: 50px;
+    width: 20px;
+}

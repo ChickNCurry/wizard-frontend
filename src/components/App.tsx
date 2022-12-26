@@ -2,11 +2,11 @@ import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 import Layout from './Layout';
-import StartPage from '../pages/StartPage';
-import LobbyPage from '../pages/LobbyPage';
-import LoginPage from '../pages/LoginPage';
-import NoPage from '../pages/NoPage';
-import GamePage from '../pages/GamePage';
+import Login from '../pages/Login';
+import Start from '../pages/Start';
+import Lobby from '../pages/Lobby';
+import Game from '../pages/Game';
+import Error from '../pages/Error';
 
 export default function App() {
     return (
@@ -14,11 +14,11 @@ export default function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Layout />}>
-                        <Route index element={<LoginPage />}></Route>
-                        <Route path="start" element={<StartPage />}></Route>
-                        <Route path="lobby" element={<LobbyPage />}></Route>
-                        <Route path="game" element={<GamePage />}></Route>
-                        <Route path="*" element={<NoPage />}></Route>
+                        <Route index element={<Login />}></Route>
+                        <Route path="start" element={<Start />}></Route>
+                        <Route path="lobby" element={<Lobby />}></Route>
+                        <Route path="game" element={<Game />}></Route>
+                        <Route path="*" element={<Error />}></Route>
                     </Route>
                 </Routes>
             </BrowserRouter>
