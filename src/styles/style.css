@@ -42,7 +42,13 @@ body {
     justify-content: center;
 }
 
+.hand {
+    position: relative;
+}
+
 .card {
-    height: 50px;
-    width: 20px;
+    position: absolute;
+    transform-origin: 0 300px;
+    height: 100px;
+    width: 50px;
 }

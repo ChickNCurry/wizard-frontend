@@ -2,6 +2,7 @@
     "name": "wizard-frontend",
     "version": "1.0.0",
     "main": "index.tsx",
+    "type": "module",
     "repository": "https://github.com/ChickNCurry/wizard-frontend.git",
     "author": "Max Burzer <maxi.burzer@gmail.com>",
     "license": "MIT",

@@ -1,3 +1,10 @@
+export enum CardSuit {
+    GREEN = 'green',
+    BLUE = 'blue',
+    RED = 'red',
+    YELLOW = 'yellow',
+}
+
 export enum CardType {
     JESTER = 0,
     ONE = 1,
@@ -16,9 +23,7 @@ export enum CardType {
     WIZARD = 14,
 }
 
-export enum CardSuit {
-    GREEN = 'green',
-    BLUE = 'blue',
-    RED = 'red',
-    YELLOW = 'yellow',
+export interface CardObject {
+    suit: CardSuit;
+    type: CardType;
 }
