@@ -13,7 +13,6 @@ body {
 }
 
 .outlet-wrapper {
-    background-color: lightcoral;
     height: 90vh;
 }
 
@@ -38,12 +37,43 @@ body {
 }
 
 .game {
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: center;
+}
+
+.info {
+    width: 30%;
+    height: 100%;
+    background-color: lightcoral;
+    display: flex;
+    flex-direction: column;
+}
+
+.data {
+    border: 2px solid black;
+}
+
+.field {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.board {
+    width: 100%;
+    height: 70%;
+    background-color: blueviolet;
 }
 
 .hand {
     position: relative;
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    background-color: orange;
 }
 
 .card {
@@ -51,4 +81,9 @@ body {
     transform-origin: 0 300px;
     height: 100px;
     width: 50px;
+}
+
+.card:hover {
+    border: 5px solid black;
+    z-index: 100;
 }

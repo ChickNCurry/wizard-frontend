@@ -27,3 +27,10 @@ export interface CardObject {
     suit: CardSuit;
     type: CardType;
 }
+
+export interface PlayerData {
+    name: string;
+    score: number;
+    bid: number;
+    actual: number;
+}
