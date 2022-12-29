@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {cardProps} from '../types/props';
+import {CardProps} from '../../types/props';
 
-export default function Card({cardSuit, cardType, rotation}: cardProps) {
+export default function Card({cardSuit, cardType, rotation}: CardProps) {
     return (
         <div
             className="card"

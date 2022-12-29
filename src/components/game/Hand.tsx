@@ -1,5 +1,5 @@
 import React from 'react';
-import {CardObject, CardSuit, CardType} from '../types/types';
+import {CardObject, CardSuit, CardType} from '../../types/types';
 import Card from './Card';
 
 export default function Hand() {

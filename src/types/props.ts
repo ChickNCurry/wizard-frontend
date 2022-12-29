@@ -1,6 +1,6 @@
 import {CardSuit, CardType} from './types';
 
-export interface cardProps {
+export interface CardProps {
     cardSuit: CardSuit;
     cardType: CardType;
     rotation: number;

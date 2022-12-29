@@ -1,5 +1,5 @@
 import React from 'react';
-import {CardSuit} from '../types/types';
+import {CardSuit} from '../../types/types';
 
 export default function Info() {
     const getRound = () => 10;

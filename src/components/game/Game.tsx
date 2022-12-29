@@ -1,7 +1,7 @@
 import React from 'react';
-import Board from '../components/Board';
-import Hand from '../components/Hand';
-import Info from '../components/Info';
+import Board from './Board';
+import Hand from './Hand';
+import Info from './Info';
 
 export default function Game() {
     return (

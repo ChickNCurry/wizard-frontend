@@ -2,11 +2,11 @@ import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 import Layout from './Layout';
-import Login from '../pages/Login';
-import Start from '../pages/Start';
-import Lobby from '../pages/Lobby';
-import Game from '../pages/Game';
-import Error from '../pages/Error';
+import Login from './login/Login';
+import Start from './start/Start';
+import Lobby from './lobby/Lobby';
+import Game from './game/Game';
+import Error from './error/Error';
 
 export default function App() {
     return (
