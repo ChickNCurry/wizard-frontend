@@ -5,6 +5,7 @@ export default function Info() {
     const getRound = () => 10;
     const getDealer = () => 'Max';
     const getTrump = () => CardSuit.RED;
+    const getTurnPlayer = () => 'Max';
     const getPlayerData = () => [
         {name: 'Max', score: 30, bid: 2, actual: 1},
         {name: 'Max', score: 30, bid: 2, actual: 1},
@@ -17,6 +18,8 @@ export default function Info() {
             <p>Round: {getRound()}</p>
             <p>Dealer: {getDealer()}</p>
             <p>Trump: {getTrump()}</p>
+            <p>Turn: {getTurnPlayer()}</p>
+            <p>Data:</p>
             <table className="data">
                 <thead>
                     <tr>

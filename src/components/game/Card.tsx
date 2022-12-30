@@ -4,6 +4,7 @@ import {CardProps} from '../../types/props';
 import {CardSuit, CardType} from '../../types/types';
 
 export default function Card({cardSuit, cardType, rotation, translation}: CardProps) {
+    console.log(process.env.SERVER_URL);
     const playCard = (cardSuit: CardSuit, cardType: CardType) => console.log(`played ${cardSuit} ${cardType}`);
     return (
         <div
