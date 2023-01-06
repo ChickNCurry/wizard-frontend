@@ -5,16 +5,16 @@ import Card from './Card';
 export default function Hand() {
     const getHand = () => {
         const hand: CardObject[] = [
+            {suit: CardSuit.BLUE, type: CardType.JESTER},
+            {suit: CardSuit.GREEN, type: CardType.ONE},
+            {suit: CardSuit.RED, type: CardType.TWO},
+            {suit: CardSuit.BLUE, type: CardType.THREE},
+            {suit: CardSuit.GREEN, type: CardType.FOUR},
+            {suit: CardSuit.BLUE, type: CardType.FIVE},
+            {suit: CardSuit.GREEN, type: CardType.SIX},
+            {suit: CardSuit.RED, type: CardType.SEVEN},
             {suit: CardSuit.BLUE, type: CardType.EIGHT},
-            {suit: CardSuit.GREEN, type: CardType.EIGHT},
-            {suit: CardSuit.RED, type: CardType.EIGHT},
-            {suit: CardSuit.BLUE, type: CardType.EIGHT},
-            {suit: CardSuit.GREEN, type: CardType.EIGHT},
-            {suit: CardSuit.BLUE, type: CardType.EIGHT},
-            {suit: CardSuit.GREEN, type: CardType.EIGHT},
-            {suit: CardSuit.RED, type: CardType.EIGHT},
-            {suit: CardSuit.BLUE, type: CardType.EIGHT},
-            {suit: CardSuit.GREEN, type: CardType.EIGHT},
+            {suit: CardSuit.GREEN, type: CardType.WIZARD},
         ];
 
         const stepSize = 90 / hand.length;
