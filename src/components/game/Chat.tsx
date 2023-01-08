@@ -3,14 +3,14 @@ import '../../styles/chat.css';
 import React, {useEffect, useState} from 'react';
 import {ChatProps} from '../../types/props';
 import {ChatMessage} from '../../types/types';
-import {connect, sendChatMessage} from '../../types/chatFunctions';
+import {connectToChat, sendChatMessage} from '../../types/webSocketFunctions';
 
-export default function Chat({user}: ChatProps) {
+export default function Chat({playerID}: ChatProps) {
     const [chat, setChat] = useState<ChatMessage[]>([]);
     const [chatMessage, setChatMessage] = useState<string>('');
 
     useEffect(() => {
-        connect(user, setChat);
+        connectToChat(playerID, setChat);
     }, []);
 
     useEffect(() => {
@@ -23,7 +23,7 @@ export default function Chat({user}: ChatProps) {
 
     const sendMessage = () => {
         if (chatMessage === '') return;
-        sendChatMessage(user, chatMessage);
+        sendChatMessage(playerID, chatMessage);
         setChatMessage('');
     };
 

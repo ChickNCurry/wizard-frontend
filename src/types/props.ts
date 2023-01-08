@@ -8,5 +8,14 @@ export interface CardProps {
 }
 
 export interface ChatProps {
-    user: string;
+    playerID: string;
+}
+
+export interface LoginProps {
+    playerID: string;
+    setPlayerID: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface GameProps {
+    playerID: string;
 }

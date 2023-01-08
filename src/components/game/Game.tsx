@@ -6,13 +6,14 @@ import Pile from './Stack';
 import Stack from './Pile';
 import Stats from './Stats';
 import Chat from './Chat';
+import {GameProps} from '../../types/props';
 
-export default function Game() {
+export default function Game({playerID}: GameProps) {
     return (
         <div className="game">
             <div className="info">
                 <Stats />
-                <Chat user="Max" />
+                <Chat playerID={playerID} />
             </div>
             <div className="table">
                 <div className="board">

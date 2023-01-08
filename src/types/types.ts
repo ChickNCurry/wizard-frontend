@@ -35,12 +35,15 @@ export interface PlayerData {
     actual: number;
 }
 
-export interface UserData {
-    user: string;
-    receiver: string;
-    connected: boolean;
-    message: string;
+export interface GameAction {
+    playerID: string;
+    actionType: ActionType;
+    card: CardObject;
+    suit: CardSuit;
+    tricks: number;
 }
+
+export type ActionType = 'SET_READY' | 'PREDICT_TRICKS' | 'PLAY_CARD' | 'CHOOSE_TRUMP_SUIT';
 
 export interface ChatMessage {
     sender: string;

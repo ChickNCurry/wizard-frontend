@@ -1,17 +1,34 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom';
+import {LoginProps} from '../../types/props';
+import {connect} from '../../types/webSocketFunctions';
 
-export default function Login() {
+export default function Login({playerID, setPlayerID}: LoginProps) {
+    const navigate = useNavigate();
+
+    const handleUserName = (event: any) => {
+        setPlayerID(event.target.value);
+    };
+
+    const handleKeyDown = (e: any) => {
+        if (e.key === 'Enter') {
+            login();
+        }
+    };
+
+    const login = () => {
+        if (playerID === '') return;
+        connect(playerID);
+        navigate('/start');
+    };
+
     return (
-        <form className="login">
+        <div className="login">
             <label>
                 Username:
-                <input type="text" />
+                <input type="text" value={playerID} onChange={handleUserName} onKeyDown={handleKeyDown} />
             </label>
-            <label>
-                Password:
-                <input type="text" />
-            </label>
-            <input type="submit" value="Login" />
-        </form>
+            <button onClick={login}>Login</button>
+        </div>
     );
 }

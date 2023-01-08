@@ -1,23 +1,47 @@
 import SockJS from 'sockjs-client';
 import {Client, Frame, over} from 'stompjs';
-import {ChatMessage} from './types';
+import {ChatMessage, GameAction} from './types';
 
 let stompClient: Client;
 
-export function connect(user: string, setChat: React.Dispatch<React.SetStateAction<ChatMessage[]>>) {
+export function connect(playerID: string) {
+    if (stompClient) stompClient.disconnect(() => console.log('disconnected'));
     let webSocket = new SockJS('http://localhost:8080/ws');
     stompClient = over(webSocket);
-    stompClient.connect({}, () => onConnected(user, setChat), onError);
-}
-
-function onConnected(user: string, setChat: React.Dispatch<React.SetStateAction<ChatMessage[]>>) {
-    if (!stompClient) return;
-    stompClient.subscribe('/chat', (payload: any) => onMessageReceived(payload, setChat));
-    sendJoinMessage(user);
+    stompClient.connect({}, () => onConnected(playerID), onError);
 }
 
 function onError(error: string | Frame) {
     console.log(error);
+}
+
+function onConnected(playerID: string) {
+    if (!stompClient) return;
+    stompClient.subscribe('/game', onGameActionReceived);
+    stompClient.subscribe(`/player/${playerID}`, onGameActionReceived);
+}
+
+function onGameActionReceived(payload: any) {
+    let payloadData: GameAction = JSON.parse(payload.body);
+    switch (payloadData.actionType) {
+        case 'SET_READY':
+            // TODO
+            break;
+        case 'PREDICT_TRICKS':
+            // TODO
+            break;
+        case 'PLAY_CARD':
+            // TODO
+            break;
+        case 'CHOOSE_TRUMP_SUIT':
+        // TODO
+    }
+}
+
+export function connectToChat(playerID: string, setChat: React.Dispatch<React.SetStateAction<ChatMessage[]>>) {
+    if (!stompClient) return;
+    stompClient.subscribe('/chat', (payload: any) => onMessageReceived(payload, setChat));
+    sendJoinMessage(playerID);
 }
 
 function onMessageReceived(payload: any, setChat: React.Dispatch<React.SetStateAction<ChatMessage[]>>) {
@@ -31,15 +55,14 @@ function onMessageReceived(payload: any, setChat: React.Dispatch<React.SetStateA
             break;
         case 'LEAVE':
             payloadData = {...payloadData, message: `${payloadData.sender} left`};
-            break;
     }
     setChat((prev) => prev.concat(payloadData));
 }
 
-function sendJoinMessage(user: string) {
+function sendJoinMessage(playerID: string) {
     if (!stompClient) return;
     let chatMessage: ChatMessage = {
-        sender: user,
+        sender: playerID,
         message: '',
         date: new Date(),
         status: 'JOIN',
@@ -47,10 +70,10 @@ function sendJoinMessage(user: string) {
     stompClient.send('/app/chat-message', {}, JSON.stringify(chatMessage));
 }
 
-export function sendChatMessage(user: string, message: string) {
+export function sendChatMessage(playerID: string, message: string) {
     if (!stompClient) return;
     let chatMessage: ChatMessage = {
-        sender: user,
+        sender: playerID,
         message: message,
         date: new Date(),
         status: 'MESSAGE',
