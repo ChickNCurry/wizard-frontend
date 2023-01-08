@@ -1,13 +1,17 @@
 import React from 'react';
 import Hand from './Hand';
-import Info from './Info';
 import Pile from './Stack';
 import Stack from './Pile';
+import Stats from './Stats';
+import Chat from './Chat';
 
 export default function Game() {
     return (
         <div className="game">
-            <Info />
+            <div className="info">
+                <Stats />
+                <Chat user="Max" />
+            </div>
             <div className="table">
                 <div className="board">
                     <Pile />

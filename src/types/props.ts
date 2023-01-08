@@ -6,3 +6,7 @@ export interface CardProps {
     rotation?: number;
     translation?: number;
 }
+
+export interface ChatProps {
+    user: string;
+}

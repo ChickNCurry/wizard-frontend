@@ -34,3 +34,19 @@ export interface PlayerData {
     bid: number;
     actual: number;
 }
+
+export interface UserData {
+    user: string;
+    receiver: string;
+    connected: boolean;
+    message: string;
+}
+
+export interface ChatMessage {
+    sender: string;
+    message: string;
+    date: Date;
+    status: Status;
+}
+
+export type Status = 'JOIN' | 'MESSAGE' | 'LEAVE';
