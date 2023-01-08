@@ -1,3 +1,5 @@
+import '../../styles/game.css';
+
 import React from 'react';
 import Hand from './Hand';
 import Pile from './Stack';

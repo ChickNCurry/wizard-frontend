@@ -1,3 +1,5 @@
+import '../../styles/card.css';
+
 import React from 'react';
 
 import {CardProps} from '../../types/props';

@@ -1,0 +1,14 @@
+.stack-wrapper {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkolivegreen;
+}
+
+.stack {
+    height: 100px;
+    width: 50px;
+    background-color: darkgrey;
+}

@@ -1,3 +1,5 @@
+import '../../styles/hand.css';
+
 import React from 'react';
 import {CardObject, CardSuit, CardType} from '../../types/types';
 import Card from './Card';

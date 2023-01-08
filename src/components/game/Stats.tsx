@@ -1,3 +1,5 @@
+import '../../styles/stats.css';
+
 import React from 'react';
 import {CardSuit} from '../../types/types';
 

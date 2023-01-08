@@ -1,3 +1,5 @@
+import '../../styles/chat.css';
+
 import React, {useEffect, useState} from 'react';
 import {ChatProps} from '../../types/props';
 import {ChatMessage} from '../../types/types';
