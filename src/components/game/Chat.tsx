@@ -4,6 +4,9 @@ import React, {useEffect, useState} from 'react';
 import {ChatProps} from '../../types/props';
 import {ChatMessage} from '../../types/types';
 import {connectToChat, sendChatMessage} from '../../types/webSocketFunctions';
+import {Button, Card} from '@blueprintjs/core';
+import {Elevation} from '@blueprintjs/core/lib/esm/common';
+import {TextArea} from '@blueprintjs/core/lib/esm/components';
 
 export default function Chat({playerID}: ChatProps) {
     const [chat, setChat] = useState<ChatMessage[]>([]);
@@ -34,12 +37,19 @@ export default function Chat({playerID}: ChatProps) {
     };
 
     return (
-        <div className="chat">
+        <Card className="chat">
             <div className="chat-output">{chat.map((entry) => <p> {entry.message} </p>).reverse()}</div>
             <div className="chat-input">
-                <input type="text" value={chatMessage} onChange={handleMessage} onKeyDown={handleKeyDown}></input>
-                <button onClick={sendMessage}>Send</button>
+                <TextArea
+                    className="chat-text-area"
+                    value={chatMessage}
+                    onChange={handleMessage}
+                    onKeyDown={handleKeyDown}
+                ></TextArea>
+                <Button className="chat-button" onClick={sendMessage}>
+                    Send
+                </Button>
             </div>
-        </div>
+        </Card>
     );
 }
