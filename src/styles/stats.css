@@ -1,8 +1,30 @@
-.stats {
+.stats-wrapper {
     width: 100%;
     height: 50%;
+    padding: 10px;
 }
 
-.data {
-    border: 2px solid black;
+.stats {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.round-stats {
+    display: flex;
+    justify-content: center;
+}
+
+.round-stat {
+    margin: 10px;
+}
+
+.score-wrapper {
+    overflow: hidden;
+}
+
+.score-wrapper:hover {
+    overflow-y: overlay;
 }

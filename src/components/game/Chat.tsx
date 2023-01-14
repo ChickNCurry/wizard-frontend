@@ -37,19 +37,21 @@ export default function Chat({playerID}: ChatProps) {
     };
 
     return (
-        <Card className="chat">
-            <div className="chat-output">{chat.map((entry) => <p> {entry.message} </p>).reverse()}</div>
-            <div className="chat-input">
-                <TextArea
-                    className="chat-text-area"
-                    value={chatMessage}
-                    onChange={handleMessage}
-                    onKeyDown={handleKeyDown}
-                ></TextArea>
-                <Button className="chat-button" onClick={sendMessage}>
-                    Send
-                </Button>
-            </div>
-        </Card>
+        <div className="chat-wrapper">
+            <Card className="chat">
+                <div className="bp4-callout chat-output">{chat.map((entry) => <p> {entry.message} </p>).reverse()}</div>
+                <div className="chat-input">
+                    <TextArea
+                        className="chat-text-area"
+                        value={chatMessage}
+                        onChange={handleMessage}
+                        onKeyDown={handleKeyDown}
+                    ></TextArea>
+                    <Button className="chat-button" onClick={sendMessage}>
+                        Send
+                    </Button>
+                </div>
+            </Card>
+        </div>
     );
 }
