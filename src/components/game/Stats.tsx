@@ -25,7 +25,7 @@ export default function Stats() {
                     <span className="bp4-callout round-stat">Trump: {getTrump()}</span>
                     <span className="bp4-callout round-stat">Turn: {getTurnPlayer()}</span>
                 </div>
-                <div className="score-wrapper">
+                <div className="bp4-callout score-wrapper">
                     <table className="bp4-html-table score">
                         <thead>
                             <tr>

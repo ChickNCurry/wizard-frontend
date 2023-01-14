@@ -8,6 +8,7 @@ import Stats from './Stats';
 import Chat from './Chat';
 import {GameProps} from '../../types/props';
 import {Card} from '@blueprintjs/core';
+import table from '../../assets/table.jpg';
 
 export default function Game({playerID}: GameProps) {
     return (

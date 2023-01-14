@@ -4,11 +4,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: darkolivegreen;
 }
 
 .stack {
-    height: 100px;
-    width: 50px;
-    background-color: darkgrey;
+    height: 130px;
+    width: 75px;
+    border-radius: 5%;
+    background-color: blue;
 }
