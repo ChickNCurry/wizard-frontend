@@ -24,7 +24,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-image: url('https://img.freepik.com/premium-photo/high-resolution-close-up-bright-green-felt-fabric-texture-rough-fleecy-fabric-green-color_261860-1185.jpg?w=2000');
+    background-size: cover;
 }
 
 .board {
