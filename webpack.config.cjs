@@ -1,43 +1,49 @@
 const prod = process.env.NODE_ENV === 'production';
 
+const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     mode: prod ? 'production' : 'development',
-    entry: './src/index.tsx',
+    entry: path.resolve(__dirname, 'src/index.tsx'),
     output: {
-        path: __dirname + '/dist/',
-        filename: 'bundle.js',
-        publicPath: '/',
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name][contenthash].js',
+        clean: true,
+        assetModuleFilename: '[name][ext]',
+    },
+    devtool: prod ? undefined : 'source-map',
+    devServer: {
+        historyApiFallback: true,
+        open: true,
+        hot: true,
+        compress: true,
     },
     module: {
         rules: [
             {
                 test: /\.(ts|tsx)$/,
                 exclude: /node_modules/,
+                loader: 'esbuild-loader',
+                options: {
+                    loader: 'tsx',
+                },
                 resolve: {
                     extensions: ['.ts', '.tsx', '.js', '.json'],
                 },
-                use: 'ts-loader',
             },
             {
                 test: /\.css$/,
                 use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
-                test: /\.(jpg|png)$/,
-                use: {
-                    loader: 'url-loader',
-                },
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
             },
         ],
     },
-    devServer: {
-        historyApiFallback: true,
-    },
-    devtool: prod ? undefined : 'source-map',
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {
@@ -45,7 +51,7 @@ module.exports = {
             },
         }),
         new HtmlWebpackPlugin({
-            template: 'index.html',
+            template: path.resolve(__dirname, 'src/index.html'),
         }),
         new MiniCssExtractPlugin(),
     ],
