@@ -8,7 +8,7 @@ import {Button, Card} from '@blueprintjs/core';
 import {Elevation} from '@blueprintjs/core/lib/esm/common';
 import {TextArea} from '@blueprintjs/core/lib/esm/components';
 
-export default function Chat({playerID}: ChatProps) {
+export default function Chat({username: playerID}: ChatProps) {
     const [chat, setChat] = useState<ChatMessage[]>([]);
     const [chatMessage, setChatMessage] = useState<string>('');
 

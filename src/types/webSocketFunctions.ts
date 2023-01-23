@@ -1,24 +1,25 @@
 import SockJS from 'sockjs-client';
 import {Client, Frame, over} from 'stompjs';
 import {ChatMessage, GameAction} from './types';
+import React from 'react';
 
 let stompClient: Client;
 
-export function connect(playerID: string) {
+export function connect(username: string) {
     if (stompClient) stompClient.disconnect(() => console.log('disconnected'));
     let webSocket = new SockJS('http://localhost:8080/ws');
     stompClient = over(webSocket);
-    stompClient.connect({}, () => onConnected(playerID), onError);
+    stompClient.connect({}, () => onConnected(username), onError);
 }
 
 function onError(error: string | Frame) {
     console.log(error);
 }
 
-function onConnected(playerID: string) {
+function onConnected(username: string) {
     if (!stompClient) return;
     stompClient.subscribe('/game', onGameActionReceived);
-    stompClient.subscribe(`/player/${playerID}`, onGameActionReceived);
+    stompClient.subscribe(`/player/${username}`, onGameActionReceived);
 }
 
 function onGameActionReceived(payload: any) {
@@ -38,10 +39,10 @@ function onGameActionReceived(payload: any) {
     }
 }
 
-export function connectToChat(playerID: string, setChat: React.Dispatch<React.SetStateAction<ChatMessage[]>>) {
+export function connectToChat(username: string, setChat: React.Dispatch<React.SetStateAction<ChatMessage[]>>) {
     if (!stompClient) return;
     stompClient.subscribe('/chat', (payload: any) => onMessageReceived(payload, setChat));
-    sendJoinMessage(playerID);
+    sendJoinMessage(username);
 }
 
 function onMessageReceived(payload: any, setChat: React.Dispatch<React.SetStateAction<ChatMessage[]>>) {
@@ -59,10 +60,10 @@ function onMessageReceived(payload: any, setChat: React.Dispatch<React.SetStateA
     setChat((prev) => prev.concat(payloadData));
 }
 
-function sendJoinMessage(playerID: string) {
+function sendJoinMessage(username: string) {
     if (!stompClient) return;
     let chatMessage: ChatMessage = {
-        sender: playerID,
+        sender: username,
         message: '',
         date: new Date(),
         status: 'JOIN',
@@ -70,10 +71,10 @@ function sendJoinMessage(playerID: string) {
     stompClient.send('/app/chat-message', {}, JSON.stringify(chatMessage));
 }
 
-export function sendChatMessage(playerID: string, message: string) {
+export function sendChatMessage(username: string, message: string) {
     if (!stompClient) return;
     let chatMessage: ChatMessage = {
-        sender: playerID,
+        sender: username,
         message: message,
         date: new Date(),
         status: 'MESSAGE',

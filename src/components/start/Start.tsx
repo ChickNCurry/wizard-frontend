@@ -1,5 +1,10 @@
+import {Card} from '@blueprintjs/core';
 import React from 'react';
 
 export default function Start() {
-    return <h1>this is the start page</h1>;
+    return (
+        <div className="start-wrapper">
+            <Card className="start"></Card>
+        </div>
+    );
 }

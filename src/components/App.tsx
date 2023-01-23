@@ -18,10 +18,10 @@ export default function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Layout />}>
-                        <Route index element={<Login playerID={playerID} setPlayerID={setPlayerID} />}></Route>
+                        <Route index element={<Login username={playerID} setUsername={setPlayerID} />}></Route>
                         <Route path="start" element={<Start />}></Route>
                         <Route path="lobby" element={<Lobby />}></Route>
-                        <Route path="game" element={<Game playerID={playerID} />}></Route>
+                        <Route path="game" element={<Game username={playerID} />}></Route>
                         <Route path="*" element={<Error />}></Route>
                     </Route>
                 </Routes>

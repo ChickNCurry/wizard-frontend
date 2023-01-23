@@ -31,11 +31,3 @@ body {
 .outlet-wrapper {
     height: 90vh;
 }
-
-.login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}

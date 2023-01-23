@@ -1,34 +1,51 @@
-import React from 'react';
+import '../../styles/login.css';
+
+import {Button, Card} from '@blueprintjs/core';
+import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+
 import {LoginProps} from '../../types/props';
-import {connect} from '../../types/webSocketFunctions';
 
-export default function Login({playerID, setPlayerID}: LoginProps) {
+export default function Login({username, setUsername}: LoginProps) {
     const navigate = useNavigate();
+    const [password, setPassword] = useState<string>('');
 
-    const handleUserName = (event: any) => {
-        setPlayerID(event.target.value);
+    const handleUsername = (event: any) => {
+        setUsername(event.target.value);
     };
 
-    const handleKeyDown = (e: any) => {
-        if (e.key === 'Enter') {
-            login();
-        }
+    const handlePassword = (event: any) => {
+        setPassword(event.target.value);
     };
 
-    const login = () => {
-        if (playerID === '') return;
-        connect(playerID);
+    const handleRegister = () => {};
+
+    const handleLogin = () => {
+        if (username === '' || password === '') return;
+        // login
         navigate('/start');
     };
 
     return (
-        <div className="login">
-            <label>
-                Username:
-                <input type="text" value={playerID} onChange={handleUserName} onKeyDown={handleKeyDown} />
-            </label>
-            <button onClick={login}>Login</button>
+        <div className="login-wrapper">
+            <Card className="login">
+                <input
+                    className="bp4-input"
+                    type="text"
+                    value={username}
+                    onChange={handleUsername}
+                    placeholder="Username"
+                />
+                <input
+                    className="bp4-input"
+                    type="password"
+                    value={password}
+                    onChange={handlePassword}
+                    placeholder="Password"
+                />
+                <Button onClick={handleLogin}>Login</Button>
+                <Button onClick={handleRegister}>Register</Button>
+            </Card>
         </div>
     );
 }
